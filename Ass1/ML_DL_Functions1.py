@@ -20,7 +20,9 @@ def LeastSquares(X,y):
     :param y: input vector
     :return: theta = (Xt*X)^(-1) * Xt * y 
   '''
-  return ...
+  Xt = np.hstack(X, np.ones(X.shape[0], 1))
+  theta = np.dot(np.matmul(np.linalg.inv(np.matmul(Xt.T, Xt)), X), y)
+  return theta
 
 def classification_accuracy(model,X,s):
   '''
