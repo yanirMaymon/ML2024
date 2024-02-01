@@ -32,7 +32,8 @@ def classification_accuracy(model,X,s):
     :param s: input ground truth label
     :return: accuracy of the model
   '''
-  return ...
+  pred_s = model.predict(X)
+  return np.sum(pred_s == s) / len(s)
 
 def linear_regression_coeff_submission():
   '''
