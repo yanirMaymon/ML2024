@@ -4,7 +4,7 @@ def ID1():
         Write your personal ID here.
     '''
     # Insert your ID here
-    return 000000000
+    return 315333997
 def ID2():
     '''
         Only If you were allowed to work in a pair will you fill this section and place the personal id of your partner otherwise leave it zeros.
@@ -62,18 +62,20 @@ def classification_coeff_submission():
     seperated by commas
     :return: list of coefficiants for the classification problem.  
   '''
-  return [[0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0]]
+  return [[-2.32346721e-01, -2.26330016e-01,  3.73492277e-01,  2.89845081e-04,
+  -8.19131150e-02, -4.93346095e-01, -3.29547168e-03, -4.17147046e-02,
+   5.45240567e-02,  2.66233029e-01, -2.56349719e-01, -7.05752413e-02,
+  -3.87044703e-02,  7.82704634e-01,  3.02500315e+00, -5.88712731e-01,
+   7.03974186e-02, -4.52925538e-02, -2.39991645e-02, -7.60048344e-02,
+  -3.35655017e-02,  6.25422731e-02,  8.70829377e-02, -3.75129173e-02,
+  -3.98792382e-01,  8.28929228e-02,  5.83071248e-02,  4.01259882e-01]]
 
 def classification_intrcpt_submission():
   '''
     copy the intercept value from your notebook into here.
     :return: the intercept value.  
   '''
-  return [0]
+  return [0.28958071]
 
 def classification_classes_submission():
   '''
