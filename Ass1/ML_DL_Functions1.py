@@ -33,7 +33,7 @@ def classification_accuracy(model,X,s):
     :return: accuracy of the model
   '''
   pred_s = model.predict(X)
-  return np.sum(pred_s == s) / len(s)
+  return 100 * (np.sum(pred_s == s) / len(s))
 
 def linear_regression_coeff_submission():
   '''
