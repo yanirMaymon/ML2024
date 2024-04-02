@@ -44,7 +44,8 @@ def pred(w, b, X):
   array([0.73105858, 0.73105858]) # It's okay if your output differs in the last decimals
   """
   # Your code goes here
-  return ...
+  y = sigmoid(np.dot(X, w) + b)
+  return y
 
 def cost(y, t):
   """
