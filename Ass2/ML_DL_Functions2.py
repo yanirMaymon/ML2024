@@ -62,7 +62,8 @@ def cost(y, t):
   0.69314718 # It's okay if your output differs in the last decimals
   """
   # Your code goes here
-  return ...
+  L = np.mean(- t * np.log(y) - (t - 1) * np.log(1 - y))
+  return L
 
 def derivative_cost(X, y, t):
   """
