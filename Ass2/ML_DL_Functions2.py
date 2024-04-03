@@ -77,6 +77,7 @@ def derivative_cost(X, y, t):
            return dLdw,dldb
   """
   # Your code goes here
-  dLdw = np.mean(X * (2 * y * t - t - y), axis=0)
-  dLdb = np.mean(2 * y * t - t - y)
+  T = 2 * y * t - t - y
+  dLdw = np.mean(X * T[:, np.newaxis], axis=0)
+  dLdb = np.mean(T)
   return (dLdw,dLdb)
