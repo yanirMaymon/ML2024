@@ -62,7 +62,7 @@ def cost(y, t):
   0.69314718 # It's okay if your output differs in the last decimals
   """
   # Your code goes here
-  return np.mean(cross_entropy(y, t))
+  return np.mean(cross_entropy(t, y))
 
 def derivative_cost(X, y, t):
   """
@@ -77,6 +77,6 @@ def derivative_cost(X, y, t):
            return dLdw,dldb
   """
   # Your code goes here
-  dLdw = ...
-  dLdb = ...
+  dLdw = np.mean(X * (2 * y * t - t - y), axis=0)
+  dLdb = np.mean(2 * y * t - t - y)
   return (dLdw,dLdb)
