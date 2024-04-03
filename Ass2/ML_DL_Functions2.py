@@ -62,8 +62,7 @@ def cost(y, t):
   0.69314718 # It's okay if your output differs in the last decimals
   """
   # Your code goes here
-  L = np.mean(- t * np.log(y) - (t - 1) * np.log(1 - y))
-  return L
+  return np.mean(cross_entropy(y, t))
 
 def derivative_cost(X, y, t):
   """
