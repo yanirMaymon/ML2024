@@ -19,8 +19,7 @@ def sigmoid(z):
   return 1 / (1 + np.exp(-z))
     
 def cross_entropy(t, y):
-  #return -t * np.log(y) - (1 - t) * np.log(1 - y)
-  return -t * np.log(y) - (t - 1) * np.log(1 - y)
+  return -t * np.log(y) - (1 - t) * np.log(1 - y)
 
 
 
@@ -79,8 +78,7 @@ def derivative_cost(X, y, t):
            return dLdw,dldb
   """
   # Your code goes here
-  T = 2 * y * t - t - y
-  # T = y - t
+  T = y - t
   dLdw = np.mean(X * T[:, np.newaxis], axis=0)
   dLdb = np.mean(T)
   return (dLdw,dLdb)
