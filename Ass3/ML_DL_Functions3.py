@@ -1,12 +1,13 @@
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 def ID1():
     '''
         Personal ID of the first student.
     '''
     # Insert your ID here
-    return 000000000
+    return 315333997
 
 def ID2():
     '''
@@ -18,12 +19,16 @@ def ID2():
 class CNN(nn.Module):
     def __init__(self): # Do NOT change the signature of this function
         super(CNN, self).__init__()
-        n = ...
-        kernel_size = ...
-        padding = ...
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=n,kernel_size=kernel_size,padding=padding),
-        # TODO: complete this method
-    
+        self.n = 32
+        kernel_size = 5
+        padding = (kernel_size - 1) / 2
+        self.conv1 = nn.Conv2d(in_channels=3,out_channels=self.n,kernel_size=kernel_size,padding=padding)
+        self.conv2 = nn.Conv2d(in_channels=self.n,out_channels=2*self.n,kernel_size=kernel_size,padding=padding)
+        self.conv4 = nn.Conv2d(in_channels=2*self.n,out_channels=4*self.n,kernel_size=kernel_size,padding=padding)
+        self.conv8 = nn.Conv2d(in_channels=4*self.n,out_channels=8*self.n,kernel_size=kernel_size,padding=padding)
+        self.fc1 = nn.Linear(28 * 14 * 8 * self.n,100)
+        self.fc2 = nn.Linear(100,2)
+
     def forward(self,inp):# Do NOT change the signature of this function
         '''
           prerequests:
@@ -40,8 +45,29 @@ class CNN(nn.Module):
             2 := same/different pair
         '''
         out = self.conv1(inp)
-        # TODO: complete this function
-        return ...
+        out = F.relu(out)
+        out = F.max_pool2d(out, kernel_size=2)
+
+        out = self.conv2(out)
+        out = F.relu(out)
+        out = F.max_pool2d(out, kernel_size=2)
+
+        out = self.conv4(out)
+        out = F.relu(out)
+        out = F.max_pool2d(out, kernel_size=2)
+
+        out = self.conv8(out)
+        out = F.relu(out)
+        out = F.max_pool2d(out, kernel_size=2)
+
+        out = out.view(-1, 8 * self.n * 28 * 14)
+        out = self.fc1(out)
+        out = F.relu(out)
+
+        out = self.fc2(out)
+        out = F.softmax(out, dim=1)
+
+        return out
 
 class CNNChannel(nn.Module):
     def __init__(self):# Do NOT change the signature of this function
