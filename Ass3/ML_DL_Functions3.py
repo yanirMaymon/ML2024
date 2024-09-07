@@ -101,6 +101,7 @@ class CNNChannel(nn.Module):
         '''
         # TODO start by changing the shape of the input to (N,6,224,224)
         inp = torch.cat([inp[:, :, :224, :], inp[:, :, 224:, :]], dim=1)
+        print(inp.shape)
         # TODO: complete this function
         out = self.conv1(inp)
         out = F.relu(out)
