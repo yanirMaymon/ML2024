@@ -75,15 +75,13 @@ class CNNChannel(nn.Module):
         self.n = 32
         kernel_size = 5
         padding = (kernel_size - 1) / 2
-        self.conv1 = nn.Conv2d(in_channels=6,out_channels=self.n,kernel_size=kernel_size,padding=padding)
-        self.conv2 = nn.Conv2d(in_channels=self.n,out_channels=2*self.n,kernel_size=kernel_size,padding=padding)
-        self.conv4 = nn.Conv2d(in_channels=2*self.n,out_channels=4*self.n,kernel_size=kernel_size,padding=padding)
-        self.conv8 = nn.Conv2d(in_channels=4*self.n,out_channels=8*self.n,kernel_size=kernel_size,padding=padding)
+        self.conv1 = nn.Conv2d(in_channels=6,out_channels=self.n,kernel_size=kernel_size,stride=1,padding=padding)
+        self.conv2 = nn.Conv2d(in_channels=self.n,out_channels=2*self.n,kernel_size=kernel_size,stride=1,padding=padding)
+        self.conv4 = nn.Conv2d(in_channels=2*self.n,out_channels=4*self.n,kernel_size=kernel_size,stride=1,padding=padding)
+        self.conv8 = nn.Conv2d(in_channels=4*self.n,out_channels=8*self.n,kernel_size=kernel_size,stride=1,padding=padding)
         self.fc1 = nn.Linear(14 * 14 * 8 * self.n,100)
         self.fc2 = nn.Linear(100,2)
-        # TODO: complete this method
 
-    # TODO: complete this class
     def forward(self,inp):# Do NOT change the signature of this function
         '''
           prerequests:
