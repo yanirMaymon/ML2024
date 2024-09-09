@@ -21,7 +21,7 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         self.n = 10
         kernel_size = 5
-        padding = (kernel_size - 1) / 2
+        padding = int((kernel_size - 1) / 2)
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=self.n,kernel_size=kernel_size,padding=padding)
         self.conv2 = nn.Conv2d(in_channels=self.n,out_channels=2*self.n,kernel_size=kernel_size,padding=padding)
         self.conv4 = nn.Conv2d(in_channels=2*self.n,out_channels=4*self.n,kernel_size=kernel_size,padding=padding)
@@ -60,7 +60,7 @@ class CNN(nn.Module):
         out = F.relu(out)
         out = F.max_pool2d(out, kernel_size=2)
 
-        out = out.view(-1, 8 * self.n * 28 * 14)
+        out = out.reshape(-1, 8 * self.n * 28 * 14)
         out = self.fc1(out)
         out = F.relu(out)
 
@@ -74,7 +74,7 @@ class CNNChannel(nn.Module):
         super(CNNChannel, self).__init__()
         self.n = 10
         kernel_size = 5
-        padding = (kernel_size - 1) / 2
+        padding = int((kernel_size - 1) / 2)
         self.conv1 = nn.Conv2d(in_channels=6,out_channels=self.n,kernel_size=kernel_size,stride=1,padding=padding)
         self.conv2 = nn.Conv2d(in_channels=self.n,out_channels=2*self.n,kernel_size=kernel_size,stride=1,padding=padding)
         self.conv4 = nn.Conv2d(in_channels=2*self.n,out_channels=4*self.n,kernel_size=kernel_size,stride=1,padding=padding)
@@ -117,7 +117,7 @@ class CNNChannel(nn.Module):
         out = F.relu(out)
         out = F.max_pool2d(out, kernel_size=2)
 
-        out = out.view(-1, 8 * self.n * 14 * 14)
+        out = out.reshape(-1, 8 * self.n * 14 * 14)
         out = self.fc1(out)
         out = F.relu(out)
 
