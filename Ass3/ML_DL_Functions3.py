@@ -17,7 +17,7 @@ def ID2():
     return 000000000
 
 class CNN(nn.Module):
-    def __init__(self, n, kernel_size): # Do NOT change the signature of this function
+    def __init__(self, n=6, kernel_size=5): # Do NOT change the signature of this function
         super(CNN, self).__init__()
         self.n = n
         # kernel_size = 5
@@ -70,7 +70,7 @@ class CNN(nn.Module):
         return out
 
 class CNNChannel(nn.Module):
-    def __init__(self, n, kernel_size):# Do NOT change the signature of this function
+    def __init__(self, n=6, kernel_size=5): # Do NOT change the signature of this function
         super(CNNChannel, self).__init__()
         self.n = n
         # kernel_size = 5
