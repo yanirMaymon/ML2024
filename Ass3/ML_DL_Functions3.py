@@ -19,7 +19,7 @@ def ID2():
 class CNN(nn.Module):
     def __init__(self): # Do NOT change the signature of this function
         super(CNN, self).__init__()
-        self.n = 10
+        self.n = 6
         kernel_size = 5
         padding = int((kernel_size - 1) / 2)
         self.conv1 = nn.Conv2d(in_channels=3,out_channels=self.n,kernel_size=kernel_size,padding=padding)
@@ -72,7 +72,7 @@ class CNN(nn.Module):
 class CNNChannel(nn.Module):
     def __init__(self):# Do NOT change the signature of this function
         super(CNNChannel, self).__init__()
-        self.n = 10
+        self.n = 6
         kernel_size = 5
         padding = int((kernel_size - 1) / 2)
         self.conv1 = nn.Conv2d(in_channels=6,out_channels=self.n,kernel_size=kernel_size,stride=1,padding=padding)
